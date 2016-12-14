@@ -9,12 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <receiver
-            android:name="FirstReceiver">
-            <intent-filter>
-                <action android:name="android.my.static" />
-            </intent-filter>
-        </receiver>
+        <!-- Register a receiver for FirstReceiver class and for action name android.my.static-->
 
         <activity android:name=".MainActivity">
             <intent-filter>
