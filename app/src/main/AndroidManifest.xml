@@ -8,21 +8,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <receiver
+            android:name="FirstReceiver">
+            <intent-filter>
+                <action android:name="android.my.static" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <receiver
-                android:name="com.example.michal.broadcastreceivers.FirstReceiver"
-                android:enabled="true"
-                android:exported="true">
-                <intent-filter>
-                    <action android:name="android.my.static" />
-                </intent-filter>
-
-            </receiver>
         </activity>
     </application>
 

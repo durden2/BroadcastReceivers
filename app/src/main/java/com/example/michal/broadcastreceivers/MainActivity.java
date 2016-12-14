@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private IntentFilter filter =
             new IntentFilter("android.my.dynamic");
-        //Ustawiliśmy sobie filtr na reakcje na nadchodzącego SMS'a
+        //  Register a filter
 
     private BroadcastReceiver broadcast = new BroadcastReceiver(){
         @Override
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         registerReceiver(broadcast, filter);
-        //nie interesuje nas tutaj czym jest filter, widzimy jednak że rejestrujemy nasz receiver w kodzie.
+        //Register our receiver in code
     }
 
     @Override
     public void onPause() {
         unregisterReceiver(broadcast);
-        // trzeba zawsze po sobie posprzątać w tym przypadku wyrejestrować receiver.
+        // Unregister receiver
         super.onPause();
     }
 }
