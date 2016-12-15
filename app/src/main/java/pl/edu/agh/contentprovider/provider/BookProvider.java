@@ -33,14 +33,6 @@ public class BookProvider extends ContentProvider {
 
     private static HashMap<String, String> BOOKS_PROJECTION_MAP;
 
-    static final UriMatcher uriMatcher;
-    static{
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "students", BOOKS);
-        uriMatcher.addURI(PROVIDER_NAME, "students/#", BOOKS_ID);
-    }
-
-
     private SQLiteDatabase db;
     static final String DATABASE_NAME = "ContentProviderAppDb";
     static final String BOOKS_TABLE_NAME = "books";
