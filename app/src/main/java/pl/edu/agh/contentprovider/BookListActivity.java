@@ -33,21 +33,4 @@ public class BookListActivity extends ListActivity {
         setListAdapter(adapter);
 
     }
-
-/*    public void bum(View view) {
-        String URL = "content://pl.edu.agh.contentprovider.provider.BookProvider";
-
-        Uri students = Uri.parse(URL);
-        Cursor c = getContentResolver().query(students, null, null, null, "_id");
-
-        if (c.moveToFirst()) {
-            do{
-                Toast.makeText(this,
-                        c.getString(c.getColumnIndex(BookProvider._ID)) +
-                                ", " +  c.getString(c.getColumnIndex( BookProvider.AUTHOR)) +
-                                ", " + c.getString(c.getColumnIndex( BookProvider.TITLE)),
-                        Toast.LENGTH_SHORT).show();
-            } while (c.moveToNext());
-        }
-    }*/
 }
