@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".provider.BookProvider"
+            android:authorities="pl.edu.agh.contentprovider.provider.BookProvider" />
+
+        <activity android:name=".BookListActivity"></activity>
     </application>
 
 </manifest>
