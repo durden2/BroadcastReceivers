@@ -73,19 +73,7 @@ public class BookProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(BOOKS_TABLE_NAME);
-
-        switch (uriMatcher.match(uri)) {
-            case BOOKS:
-                qb.setProjectionMap(BOOKS_PROJECTION_MAP);
-                break;
-
-            case BOOKS_ID:
-                qb.appendWhere( _ID + "=" + uri.getPathSegments().get(1));
-                break;
-
-            default:
-        }
-
+        
         if (sortOrder == null || sortOrder == ""){
             sortOrder = AUTHOR;
         }
