@@ -3,22 +3,20 @@ package pl.edu.agh.contentprovider.provider;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.annotation.Nullable;
-
-import java.util.HashMap;
-
 /**
  * Created by pawel on 14.12.2016.
  */
 
 public class BookProvider extends ContentProvider {
-    static final String PROVIDER_NAME = "pl.edu.agh.contentprovider.provider.BookProvider";
-    static final String URL = "content://" + PROVIDER_NAME + "/books";
+
+    //TODO: wprowadzic odpowiednie wartosci
+    static final String PROVIDER_NAME = new String();
+    static final String URL = new String();
     static final Uri CONTENT_URI = Uri.parse(URL);
 
     static final String _ID = "_id";
@@ -28,25 +26,13 @@ public class BookProvider extends ContentProvider {
     static final int BOOKS = 1;
     static final int BOOKS_ID = 2;
 
-    private static HashMap<String, String> BOOK_PROJECTION_MAP;
-
-    static final UriMatcher uriMatcher;
-    static{
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "students", BOOKS);
-        uriMatcher.addURI(PROVIDER_NAME, "students/#", BOOKS_ID);
-    }
-
-
     private SQLiteDatabase db;
+
     static final String DATABASE_NAME = "ContentProviderAppDb";
     static final String BOOKS_TABLE_NAME = "books";
     static final int DATABASE_VERSION = 1;
-    static final String CREATE_DB_TABLE =
-            " CREATE TABLE " + BOOKS_TABLE_NAME +
-                    " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    " author TEXT NOT NULL, " +
-                    " title TEXT NOT NULL);";
+    // TODO: Napisac SQLa tworzacego db
+    static final String CREATE_DB_TABLE = new String();
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context){
@@ -66,15 +52,38 @@ public class BookProvider extends ContentProvider {
     }
 
 
+
+    @Nullable
     @Override
-    public boolean onCreate() {
-        return false;
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+
+        //TODO: utworzyc obiekt SQLiteQueryBuilder, ustawic w nim tabelę, wywolac metode query (wynik zwrocic do obiektu Cursor)
+        // wywolac na cursorze metode setNotificationUri(getContext().getContentResolver(), uri), zwrocic cursor
+        return null;
     }
 
     @Nullable
     @Override
-    public Cursor query(Uri uri, String[] strings, String s, String[] strings1, String s1) {
+    public Uri insert(Uri uri, ContentValues contentValues) {
+        // TODO: wywolac metode insert obiektu db, sprawdzic czy zwrocona wartosc (id) jest wieksza od zera, zwrocic obiekt uri (jak go utworzyc - branch final)
         return null;
+    }
+
+    @Override
+    public int delete(Uri uri, String s, String[] strings) {
+        //TODO: wywolac metode delete obiektu db ;)
+        return 0;
+    }
+
+    @Override
+    public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
+        //TODO: wywolac metode update obiektu db ;)
+        return 0;
+    }
+
+    @Override
+    public boolean onCreate() {
+        return false;
     }
 
     @Nullable
@@ -83,19 +92,4 @@ public class BookProvider extends ContentProvider {
         return null;
     }
 
-    @Nullable
-    @Override
-    public Uri insert(Uri uri, ContentValues contentValues) {
-        return null;
-    }
-
-    @Override
-    public int delete(Uri uri, String s, String[] strings) {
-        return 0;
-    }
-
-    @Override
-    public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
-        return 0;
-    }
 }
